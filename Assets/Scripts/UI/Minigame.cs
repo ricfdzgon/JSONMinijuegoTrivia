@@ -17,7 +17,7 @@ public class Minigame : MonoBehaviour
     private int numPregunta;
     void Start()
     {
-        Invoke("RellenarPregunta", 2f);
+        Invoke("RellenarPregunta", 1f);
     }
 
     void Update()
