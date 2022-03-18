@@ -34,6 +34,8 @@ public class Minigame : MonoBehaviour
 
     private void RellenarPregunta(int numeroPregunta)
     {
+        numPregunta = numeroPregunta;
+    
     }
 
     private void RellenarBotones(int numeroPregunta)
