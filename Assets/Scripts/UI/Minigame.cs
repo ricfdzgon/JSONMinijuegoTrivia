@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Minigame : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Minigame : MonoBehaviour
     public TextMeshProUGUI textoBoton3;
     public TextMeshProUGUI textoBoton4;
     public GameObject botones;
+
+    private int numPregunta;
     void Start()
     {
         Invoke("RellenarPregunta", 5f);
@@ -35,10 +38,34 @@ public class Minigame : MonoBehaviour
 
     private void RellenarBotones(int numeroPregunta)
     {
-        triviaGame.numeroPregunta = numeroPregunta;
+        numPregunta = numeroPregunta;
         textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
         textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
         textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
         textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+    }
+
+    public void ComprobarBoton(GameObject textoBoton)
+    {
+        string respuesta = textoBoton.GetComponentInChildren<TextMeshProUGUI>().text;
+        if (respuesta == triviaGame.getJSON().results[numPregunta].correct_answer)
+        {
+            Correcto();
+        }
+        else
+        {
+            Incorrecto();
+        }
+
+    }
+
+    private void Correcto()
+    {
+        Debug.Log("Respuesta CORRECTA");
+    }
+
+    private void Incorrecto()
+    {
+        Debug.Log("Respuesta INCORRECTA");
     }
 }
