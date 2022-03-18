@@ -13,18 +13,16 @@ public class Minigame : MonoBehaviour
     public TextMeshProUGUI textoBoton3;
     public TextMeshProUGUI textoBoton4;
     public GameObject botones;
+    public PanelInicial panelInicial;
 
     private int numPregunta = 0;
     private int numeroPreguntas;
     void Start()
     {
         Invoke("RellenarPregunta", 2f);
+        panelInicial = new PanelInicial();
     }
 
-    void Update()
-    {
-
-    }
 
     private void RellenarPregunta()
     {
@@ -101,12 +99,13 @@ public class Minigame : MonoBehaviour
         }
         else
         {
-            Debug.Log("You win");
+            panelInicial.HabilitarWin();
         }
     }
 
     private void Incorrecto()
     {
-        Debug.Log("Respuesta INCORRECTA");
+        panelInicial.HabilitarGameOver();
     }
+
 }
