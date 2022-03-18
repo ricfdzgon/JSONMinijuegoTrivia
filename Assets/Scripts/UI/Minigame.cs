@@ -14,10 +14,11 @@ public class Minigame : MonoBehaviour
     public TextMeshProUGUI textoBoton4;
     public GameObject botones;
 
-    private int numPregunta;
+    private int numPregunta = 0;
+    private int numeroPreguntas;
     void Start()
     {
-        Invoke("RellenarPregunta", 1f);
+        Invoke("RellenarPregunta", 2f);
     }
 
     void Update()
@@ -27,15 +28,18 @@ public class Minigame : MonoBehaviour
 
     private void RellenarPregunta()
     {
-        preguntaText.text = triviaGame.getJSON().results[0].question;
+        preguntaText.text = triviaGame.getJSON().results[numPregunta].question;
+        numeroPreguntas = triviaGame.getJSON().results.Count;
         botones.SetActive(true);
-        RellenarBotones(0);
+        RellenarBotones(numPregunta);
     }
 
     private void RellenarPregunta(int numeroPregunta)
     {
-        numPregunta = numeroPregunta;
-
+        preguntaText.text = triviaGame.getJSON().results[numPregunta].question;
+        numeroPreguntas = triviaGame.getJSON().results.Count;
+        botones.SetActive(true);
+        RellenarBotones(numeroPregunta);
     }
 
     private void RellenarBotones(int numeroPregunta)
@@ -89,6 +93,16 @@ public class Minigame : MonoBehaviour
     private void Correcto()
     {
         Debug.Log("Respuesta CORRECTA");
+        if (numPregunta < numeroPreguntas - 1)
+        {
+            numPregunta++;
+            RellenarPregunta(numPregunta);
+            RellenarBotones(numPregunta);
+        }
+        else
+        {
+            Debug.Log("You win");
+        }
     }
 
     private void Incorrecto()
