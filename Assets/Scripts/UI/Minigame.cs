@@ -17,7 +17,7 @@ public class Minigame : MonoBehaviour
     private int numPregunta;
     void Start()
     {
-        Invoke("RellenarPregunta", 5f);
+        Invoke("RellenarPregunta", 2f);
     }
 
     void Update()
@@ -35,16 +35,41 @@ public class Minigame : MonoBehaviour
     private void RellenarPregunta(int numeroPregunta)
     {
         numPregunta = numeroPregunta;
-    
+
     }
 
     private void RellenarBotones(int numeroPregunta)
     {
         numPregunta = numeroPregunta;
-        textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
-        textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
-        textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
-        textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+        int random = Random.Range(0, 4);
+
+        switch (random)
+        {
+            case 0:
+                textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
+                textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
+                textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
+                textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+                break;
+            case 1:
+                textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
+                textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
+                textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
+                textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+                break;
+            case 2:
+                textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
+                textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
+                textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
+                textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+                break;
+            case 3:
+                textoBoton4.text = triviaGame.getJSON().results[numeroPregunta].correct_answer;
+                textoBoton1.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[0];
+                textoBoton2.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[1];
+                textoBoton3.text = triviaGame.getJSON().results[numeroPregunta].incorrect_answers[2];
+                break;
+        }
     }
 
     public void ComprobarBoton(GameObject textoBoton)
