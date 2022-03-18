@@ -10,7 +10,7 @@ public class Trivia : MonoBehaviour
     void Start()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("https://opentdb.com/api.php?amount=10"));
+        StartCoroutine(GetRequest("https://opentdb.com/api.php?amount=5"));
     }
 
     IEnumerator GetRequest(string uri)

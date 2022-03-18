@@ -13,14 +13,12 @@ public class Minigame : MonoBehaviour
     public TextMeshProUGUI textoBoton3;
     public TextMeshProUGUI textoBoton4;
     public GameObject botones;
-    public PanelInicial panelInicial;
 
     private int numPregunta = 0;
     private int numeroPreguntas;
     void Start()
     {
         Invoke("RellenarPregunta", 2f);
-        panelInicial = new PanelInicial();
     }
 
 
@@ -35,7 +33,6 @@ public class Minigame : MonoBehaviour
     private void RellenarPregunta(int numeroPregunta)
     {
         preguntaText.text = triviaGame.getJSON().results[numPregunta].question;
-        numeroPreguntas = triviaGame.getJSON().results.Count;
         botones.SetActive(true);
         RellenarBotones(numeroPregunta);
     }
@@ -98,14 +95,18 @@ public class Minigame : MonoBehaviour
             RellenarBotones(numPregunta);
         }
         else
-        {
-            panelInicial.HabilitarWin();
+        {/*
+            ControlPanel controlPanel = new ControlPanel();
+            controlPanel.HabilitarWin();*/
+            ControlPanel.instance.HabilitarWin();
         }
     }
 
     private void Incorrecto()
-    {
-        panelInicial.HabilitarGameOver();
+    {/*
+        ControlPanel controlPanel = new ControlPanel();
+        controlPanel.HabilitarGameOver();*/
+        ControlPanel.instance.HabilitarGameOver();
     }
 
 }

@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &320571853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -890,8 +890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 320571852}
-  panelWin: {fileID: 0}
-  panelGameOver: {fileID: 0}
 --- !u!1 &339263968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,7 +2108,6 @@ MonoBehaviour:
   textoBoton3: {fileID: 1556129262}
   textoBoton4: {fileID: 1041630918}
   botones: {fileID: 317362352}
-  panelInicial: {fileID: 0}
 --- !u!114 &1084699367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,10 +2117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084699361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618c219f6bfe5714e9f05cd9d8fdc654, type: 3}
+  m_Script: {fileID: 11500000, guid: c80d9ecfe178a4d44be3bf4bb35e46f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 320571852}
   panelWin: {fileID: 1872528952}
   panelGameOver: {fileID: 532127216}
 --- !u!1 &1510382753
